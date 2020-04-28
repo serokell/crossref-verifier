@@ -2,20 +2,21 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-{ static ? false }:
+{ static ? false, sources ? import ./nix/sources.nix
+, nixpkgs ? import sources.nixpkgs (import sources."haskell.nix")
+}:
 let
-  sources = import ./nix/sources.nix;
-  nixpkgs = import sources.nixpkgs (import sources."haskell.nix");
-  pkgs = if static then nixpkgs.pkgsCross.musl64 else nixpkgs;
+  pkgs = if static then
+    nixpkgs.pkgsCross.musl64
+  else
+    nixpkgs;
   project = pkgs.haskell-nix.stackProject {
     src = pkgs.haskell-nix.haskellLib.cleanGit { src = ./.; };
     modules = [{
       packages.xrefcheck = {
         package.ghcOptions = "-Werror";
         configureFlags = with pkgs;
-          lib.optionals static [
-            "--ghc-option=-optl=-L${zlib.static}/lib"
-          ];
+          lib.optionals static [ "--ghc-option=-optl=-L${zlib.static}/lib" ];
       };
     }];
   };

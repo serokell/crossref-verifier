@@ -1,0 +1,29 @@
+{
+  "nodes": {
+    "haskell-nix": {
+      "info": {
+        "lastModified": 1588006710,
+        "narHash": "sha256-L8YwkRgKgBlE7ror3H6iB8X3rGi9ws3Ge73xYloQSy4="
+      },
+      "locked": {
+        "owner": "serokell",
+        "repo": "haskell.nix",
+        "rev": "a894257c781cb7c2d8af70670eb928c23c12310b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serokell",
+        "ref": "flake",
+        "repo": "haskell.nix",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "haskell-nix": "haskell-nix"
+      }
+    }
+  },
+  "root": "root",
+  "version": 5
+}
