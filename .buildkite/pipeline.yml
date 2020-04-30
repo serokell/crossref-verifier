@@ -5,7 +5,7 @@
 steps:
   - command: nix run  -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') nixFlakes -c nix --experimental-features "nix-command nix-flakes" flake check
     label: Library and tests
-    - command: nix run -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') -c nix --experimental-features "nix-command nix-flakes"  build
+  - command: nix run -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') -c nix --experimental-features "nix-command nix-flakes"  build
     label: Executable
     artifact_paths:
       - "result/bin/xrefcheck"
