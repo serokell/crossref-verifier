@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 steps:
-  - command: nix run  -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') nixFlakes -c "nix run nix -c 'nix flake check'"
+  - command: nix run  -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') nixFlakes -c nix run nix -c nix flake check
     label: Library and tests
-  - command: nix run -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') -c "nix run nix -c 'nix build'"
+  - command: nix run -f $(nix eval --raw '((import ./nix/sources.nix).nixpkgs)') -c nix run nix -c nix build
     label: Executable
     artifact_paths:
       - "result/bin/xrefcheck"
