@@ -18,13 +18,6 @@
 
   outputs = { self, haskell-nix }:
     let
-      nixpkgsFor = system:
-        import haskell-nix.sources.nixpkgs-default {
-          localSystem = { inherit system; };
-          overlays = [ haskell-nix.overlay ];
-          inherit (haskell-nix) config;
-        };
-
       # Perhaps we should provide a more convinient way to do this?
       lib = import "${haskell-nix.sources.nixpkgs-default}/lib";
       inherit (lib) genAttrs;
@@ -34,7 +27,7 @@
       # We should think of some way to fix that (I'm not sure if there is one)
       systems = [ "x86_64-linux" ];
 
-      mkProject = system: static: import ./xrefcheck.nix { nixpkgs = nixpkgsFor system; inherit static; };
+      mkProject = system: static: import ./xrefcheck.nix { nixpkgs = haskell-nix.legacyPackages.${system}; inherit static; };
       mkExes = system: (mkProject system false).components.exes;
       mkStatic = system: { xrefcheck-static = (mkProject system true).components.exes.xrefcheck; };
       mkTests = system: (mkProject system false).components.tests;

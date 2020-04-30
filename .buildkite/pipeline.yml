@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 steps:
-  - command: nix-build xrefcheck.nix
+  - command: nix run nixpkgs.nixFlakes -c "nix run nix -c 'nix flake check'"
     label: Library and tests
-  - command: nix-build
+  - command: nix run nixpkgs.nixFlakes -c "nix run nix -c 'nix build'"
     label: Executable
     artifact_paths:
       - "result/bin/xrefcheck"

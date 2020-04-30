@@ -2,13 +2,13 @@
   "nodes": {
     "haskell-nix": {
       "info": {
-        "lastModified": 1588006710,
-        "narHash": "sha256-L8YwkRgKgBlE7ror3H6iB8X3rGi9ws3Ge73xYloQSy4="
+        "lastModified": 1588251809,
+        "narHash": "sha256-Ed+tWumzcQOHOibsa4YU4Ly/f0Gtz63MlCCO9Y2GSjs="
       },
       "locked": {
         "owner": "serokell",
         "repo": "haskell.nix",
-        "rev": "a894257c781cb7c2d8af70670eb928c23c12310b",
+        "rev": "5cc56598605b7a6dd32051e32adcc5b82bfef10d",
         "type": "github"
       },
       "original": {
