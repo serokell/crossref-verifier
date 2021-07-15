@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2021 Serokell <https://serokell.io>
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# snapshot used for the ./scripts/generate-cabal-files.sh script
+name: stack2cabal-snapshot
+
+resolver: lts-17.3
+packages:
+  # the versions must be the same that ci uses, to make sure `stack2cabal` output is identical
+  - stack2cabal-1.0.12
