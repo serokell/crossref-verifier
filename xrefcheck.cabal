@@ -1,0 +1,207 @@
+cabal-version: 2.0
+
+-- This file has been generated from package.yaml by hpack version 0.34.3.
+--
+-- see: https://github.com/sol/hpack
+
+name:           xrefcheck
+version:        0.2
+description:    Please see the README on GitHub at <https://github.com/serokell/xrefcheck#readme>
+homepage:       https://github.com/serokell/xrefcheck#readme
+bug-reports:    https://github.com/serokell/xrefcheck/issues
+author:         Kostya Ivanov, Serokell
+maintainer:     Serokell <hi@serokell.io>
+copyright:      2018-2019 Serokell <https://serokell.io>
+license:        MPL-2.0
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGES.md
+    src-files/def-config.yaml
+
+source-repository head
+  type: git
+  location: https://github.com/serokell/xrefcheck
+
+library
+  exposed-modules:
+      Xrefcheck.CLI
+      Xrefcheck.Config
+      Xrefcheck.Core
+      Xrefcheck.Progress
+      Xrefcheck.Scan
+      Xrefcheck.Scanners
+      Xrefcheck.Scanners.Markdown
+      Xrefcheck.System
+      Xrefcheck.Util
+      Xrefcheck.Verify
+  other-modules:
+      Paths_xrefcheck
+  autogen-modules:
+      Paths_xrefcheck
+  hs-source-dirs:
+      src
+  default-extensions: AllowAmbiguousTypes BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveGeneric FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeFamilies UndecidableInstances ViewPatterns TypeApplications TypeOperators
+  ghc-options: -Wall -Wincomplete-record-updates -Wincomplete-uni-patterns
+  build-depends:
+      Glob
+    , HUnit
+    , aeson
+    , aeson-casing
+    , async
+    , base <4.15
+    , bytestring
+    , cmark-gfm
+    , containers
+    , data-default
+    , deepseq
+    , directory
+    , directory-tree
+    , file-embed
+    , filepath
+    , fmt
+    , http-client
+    , http-types
+    , lens
+    , modern-uri
+    , mtl
+    , o-clock
+    , optparse-applicative
+    , pretty-terminal
+    , regex-tdfa
+    , req
+    , roman-numerals
+    , template-haskell
+    , text
+    , text-metrics
+    , th-lift-instances
+    , th-utilities
+    , transformers
+    , universum
+    , with-utf8
+    , yaml
+  mixins:
+      base hiding (Prelude)
+    , universum (Universum as Prelude)
+    , universum (Universum.Unsafe as Unsafe)
+  default-language: Haskell2010
+
+executable xrefcheck
+  main-is: Main.hs
+  other-modules:
+      Paths_xrefcheck
+  autogen-modules:
+      Paths_xrefcheck
+  hs-source-dirs:
+      exec
+  default-extensions: AllowAmbiguousTypes BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveGeneric FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeFamilies UndecidableInstances ViewPatterns TypeApplications TypeOperators
+  ghc-options: -Wall -Wincomplete-record-updates -Wincomplete-uni-patterns -threaded -rtsopts -with-rtsopts=-N -O2
+  build-depends:
+      Glob
+    , HUnit
+    , aeson
+    , aeson-casing
+    , async
+    , base <4.15
+    , bytestring
+    , cmark-gfm
+    , containers
+    , data-default
+    , deepseq
+    , directory
+    , directory-tree
+    , file-embed
+    , filepath
+    , fmt
+    , http-client
+    , http-types
+    , lens
+    , modern-uri
+    , mtl
+    , o-clock
+    , optparse-applicative
+    , pretty-terminal
+    , regex-tdfa
+    , req
+    , roman-numerals
+    , template-haskell
+    , text
+    , text-metrics
+    , th-lift-instances
+    , th-utilities
+    , transformers
+    , universum
+    , with-utf8
+    , xrefcheck
+    , yaml
+  mixins:
+      base hiding (Prelude)
+    , universum (Universum as Prelude)
+    , universum (Universum.Unsafe as Unsafe)
+  default-language: Haskell2010
+
+test-suite xrefcheck-tests
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Spec
+      Test.Xrefcheck.AnchorsSpec
+      Test.Xrefcheck.ConfigSpec
+      Test.Xrefcheck.IgnoreAnnotationsSpec
+      Test.Xrefcheck.IgnoreRegexSpec
+      Test.Xrefcheck.LocalSpec
+      Paths_xrefcheck
+  autogen-modules:
+      Paths_xrefcheck
+  hs-source-dirs:
+      tests
+  default-extensions: AllowAmbiguousTypes BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveGeneric FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeFamilies UndecidableInstances ViewPatterns TypeApplications TypeOperators
+  ghc-options: -Wall -Wincomplete-record-updates -Wincomplete-uni-patterns
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  build-depends:
+      Glob
+    , HUnit
+    , QuickCheck
+    , aeson
+    , aeson-casing
+    , async
+    , base <4.15
+    , bytestring
+    , cmark-gfm
+    , containers
+    , data-default
+    , deepseq
+    , directory
+    , directory-tree
+    , file-embed
+    , filepath
+    , fmt
+    , hspec
+    , http-client
+    , http-types
+    , lens
+    , modern-uri
+    , mtl
+    , o-clock
+    , optparse-applicative
+    , pretty-terminal
+    , regex-tdfa
+    , req
+    , roman-numerals
+    , template-haskell
+    , text
+    , text-metrics
+    , th-lift-instances
+    , th-utilities
+    , transformers
+    , universum
+    , with-utf8
+    , xrefcheck
+    , yaml
+  mixins:
+      base hiding (Prelude)
+    , universum (Universum as Prelude)
+    , universum (Universum.Unsafe as Unsafe)
+  default-language: Haskell2010

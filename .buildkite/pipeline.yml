@@ -1,8 +1,10 @@
-# SPDX-FileCopyrightText: 2019 Serokell <https://serokell.io>
+# SPDX-FileCopyrightText: 2021 Serokell <https://serokell.io>
 #
 # SPDX-License-Identifier: MPL-2.0
 
 steps:
+  - command: NIXPKGS_ALLOW_BROKEN=1 nix-shell -p 'haskell.lib.doJailbreak haskellPackages.stack2cabal' --run 'scripts/validate-cabal-files.sh'
+    label: validate cabal files
   - command: nix-build ci.nix -A trailing-whitespace-check
     label: Check trailing whitespaces
   - command: nix-build ci.nix -A xrefcheck-lib-and-tests
