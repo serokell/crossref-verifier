@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 steps:
-  - command: nix-shell --run 'scripts/validate-cabal-files.sh'
+  - command: NIXPKGS_ALLOW_BROKEN=1 nix-shell -p 'haskell.lib.doJailbreak haskellPackages.stack2cabal' --run 'scripts/validate-cabal-files.sh'
     label: validate cabal files
   - command: nix-build ci.nix -A trailing-whitespace-check
     label: Check trailing whitespaces

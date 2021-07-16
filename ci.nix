@@ -26,20 +26,4 @@ rec {
   xrefcheck-windows = (import ./xrefcheck.nix { windows = true; }).components.exes.xrefcheck;
 
   trailing-whitespace-check = pkgs.build.checkTrailingWhitespace project-src;
-
-  # nixpkgs has an older version of stack2cabal which doesn't build
-  # with new libraries, use a newer version
-  packages.stack2cabal = (pkgs.haskellPackages.callHackageDirect {
-    pkg = "stack2cabal";
-    ver = "1.0.11";
-    sha256 = "00vn1sjrsgagqhdzswh9jg0cgzdgwadnh02i2fcif9kr5h0khfw9";
-  } { }).overrideAttrs (o: {
-    src = pkgs.fetchFromGitHub {
-      owner = "hasufell";
-      repo = "stack2cabal";
-      rev = "afa113beb77569ff21f03fade6ce39edc109598d";
-      sha256 = "1zwg1xkqxn5b9mmqafg87rmgln47zsmpgdkly165xdzg38smhmng";
-    };
-    version = "1.0.12";
-  });
 }
